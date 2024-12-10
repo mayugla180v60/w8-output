@@ -53,24 +53,48 @@
 <div class="form-container">
   <h2>Sign in to your account</h2>
 
-  <form action="" class="form">
+  <!-- <form action="" class="form"> -->
     <label>
       <p>Your Email</p>
-      <input type="email" name="" id="" placeholder="name@company.com">
+      <input type="email" name="email" id="email" placeholder="name@company.com">
     </label>
 
     <label>
       <p>Password</p>
-      <input type="password" name="" id="">
+      <input type="password" name="password" id="password">
     </label>
-
-    <button type="submit">Sign in</button>
-  </form>
+    <!-- <button id="btn">表示</button> -->
+    <button id="btn">Sign in</button>
+  <!-- </form> -->
 
   <p class="note">Don't have an account yet? <a href="/">Sign up</a></p>
 </div>
 
+<script>
+  //要素の取得
+  var email    = document.querySelector('#email');
+  var password = document.querySelector('#password');
+  var btn      = document.querySelector('#btn');
 
+  btn.addEventListener("click", () => {
+    const inputEmail = email.value;
+    const inputPass = password.value;
+    localStorage.setItem("email", inputEmail);
+    localStorage.setItem("password", inputPass);
+  });
+
+  const getPass  = localStorage.getItem("password");
+  
+  email.addEventListener('focus', (e) => {
+    const getEmail = localStorage.getItem("email");
+    email.value = getEmail;
+  })
+  email.addEventListener('focus', (e) => {
+    const getPass  = localStorage.getItem("password");
+    password.value = getPass;
+  })
+
+</script>
 
 </body>
 </html>
